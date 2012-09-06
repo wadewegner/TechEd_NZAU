@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phone", "Phone\Phone.csproj", "{A61B9315-660D-4F84-894E-EEC293920454}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{EACBA750-5B58-4C99-83D9-ED764F73200A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A61B9315-660D-4F84-894E-EEC293920454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A61B9315-660D-4F84-894E-EEC293920454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A61B9315-660D-4F84-894E-EEC293920454}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A61B9315-660D-4F84-894E-EEC293920454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A61B9315-660D-4F84-894E-EEC293920454}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A61B9315-660D-4F84-894E-EEC293920454}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EACBA750-5B58-4C99-83D9-ED764F73200A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EACBA750-5B58-4C99-83D9-ED764F73200A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EACBA750-5B58-4C99-83D9-ED764F73200A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EACBA750-5B58-4C99-83D9-ED764F73200A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

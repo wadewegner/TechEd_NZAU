@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sample Management UI for Windows Phone</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div id="header">
+                 <div id="title">
+                    <h1>Sample Management UI for Windows Phone</h1>
+                </div>                        
+            
+                <div class="clear"></div>
+
+            </div>
+        </header>
+        <section id="main">
+        
+            <h2>Introduction</h2>
+            <p>
+                The Push Notification Sample Management UI for Windows Phone allows you to manually send push notifications to the Windows Phone devices that were registered with the <strong>Push Notification Registration Cloud Service</strong>. This NuGet package includes a sample MVC Area called "Notifications" containing the Management UI, and uses the MPNS Recipe for sending all the supported types of push notification messages.
+			</p>
+			
+			<!------------------------------------------>
+			<h3>Prerequisites</h3>
+            <ul>
+                <li><a href="http://www.microsoft.com/windowsazure/sdk/">Windows Azure SDK and Tools</a></li>
+                <li><a href="http://www.nuget.org/">NuGet 1.5 or above</a></li>
+				<li><a href="http://www.asp.net/mvc/mvc3">ASP.NET MVC 3</a></li>
+            </ul>
+			
+			<!------------------------------------------>
+			<h2>Configuration</h2>
+			<h3>Configuring your Windows Azure Storage account</h3>
+			<p>In order to set a new background or back background image in your Windows Phone application when sending a tile notification message, you need to have the image previously hosted in a public location and then get its URL. A good place to store these images is in a public blob container in Windows Azure Storage since it is really easy to upload and list files using the Windows Azure SDK Storage Client library.
+			   For this reason, this package is configured by default to use the Development Storage account. To change this default setting and use your own Windows Azure Storage account, you can do the following:</p>
+			<ol>
+				<li>Go to the <strong>App_Start</strong> folder and open the <strong>NotificationManagementUi.cs</strong> file.</li>
+				<li>In this file, replace <strong>CloudStorageAccount.DevelopmentStorageAccount</strong> with a new instance of the <strong>CloudStorageAccount</strong> class created with your Windows Azure Storage account name and key.</li>
+				<br/><img src="Content/NotificationManagementUiInitializer.Account.png" title="Configuring your Windows Azure Storage settings" />
+			</ol>
+			
+			<!------------------------------------------>
+			<h3>Configuring the background images for tile notification messages</h3>
+			<p>By default, this package uses <i>tileimagescontainer</i> as the container name, and adds four sample tile images. To change this default settings you can do the following.</p>
+			<ol>
+				<li>Go to the <strong>App_Start</strong> folder and open the <strong>NotificationManagementUi.cs</strong> file.</li>
+				<li>In this file, replace the string value of the <strong>TileImagesContainerName</strong> constante the one you want.</li>
+				<li>To change the images uploaded when the application starts, you can remove the calls to the <strong>UploadTileImage</strong> method. In case you want to add your own tile images you can upload them directly to the container (note that tile images are required to be 173x173 pixels).</li>
+				<br/><img src="Content/NotificationManagementUiInitializer.Images.png" title="Configuring the tile images" />
+			</ol>
+			<!------------------------------------------>
+        </section>
+    </div>
+</body>
+</html>

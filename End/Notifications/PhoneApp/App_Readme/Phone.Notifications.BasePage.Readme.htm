@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Push Notification Registration Service Client for Windows Phone</title>
+    <link rel="shortcut icon" href="beauty.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div id="header">
+                <div id="title">
+                    <h1>Push Notification Registration Service Client for Windows Phone</h1>
+                </div>                        
+            
+                <div class="clear"></div>
+
+            </div>
+        </header>
+        <section id="main">
+            <h2>Introduction</h2>
+            <p>
+                The Push Notification Registration Service Client for Windows Phone enables your phone application to register (and unregister) for receiving push notification messages from your Cloud Services.
+                This client allows you to easily obtain a notification channel from the Microsoft Push Notification Service (MPNS), and register it with your Push Notification Registration Cloud Service.
+                Once you do that, your phone application will be able to receive raw, toast and tile push notification messages.
+            </p>
+        <p>
+                This package includes a sample XAML page to show you how to add Push 
+                Notifications to your Windows Phone application.</p>
+            <p>
+                To find out more about Push Notifications for Windows Phone, check the <a href="http://msdn.microsoft.com/library/ff402558(v=vs.92).aspx">Push Notifications Overview for Windows Phone</a> from MSDN.
+            </p>
+            <h3>Prerequisites</h3>
+            <ul>
+                <li><a href="http://www.microsoft.com/download/en/details.aspx?id=27570">Windows Phone SDK 7.1</a></li>
+                <li><a href="http://www.nuget.org/">NuGet 1.5 or above</a></li>
+            </ul>
+
+            <h2>Integrating the notifications page with your phone application</h2>
+            <ol>
+                <li>This package includes a base notifications page that uses the client library to register (and unregister) for receiving push notifications. In order to integrate this page with your Windows Phone application navigation flow you must link 
+                    to it from any existing page in your application, or, alternately, you may set it as the default page for your application as is shown in the following image.</li>
+                <br/><img src="Content/NotificationsPage-WMAppManifest.png" title="Setting the notifications page as default in the WMAppManifest.xml file" /><br/><br/>
+            </ol>
+            <!------------------------------------------>
+        </section>
+    </div>
+</body>
+</html>

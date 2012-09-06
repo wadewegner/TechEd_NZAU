@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Push Notification Registration Service Client for Windows Phone</title>
+    <link rel="shortcut icon" href="beauty.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div id="header">
+                <div id="title">
+                    <h1>Push Notification Registration Service Client for Windows Phone</h1>
+                </div>                        
+            
+                <div class="clear"></div>
+
+            </div>
+        </header>
+        <section id="main">
+            <h2>Introduction</h2>
+            <p>
+                The Push Notification Registration Service Client for Windows Phone enables your phone application to register (and unregister) for receiving push notification messages from your Cloud Services.
+                This client allows you to easily obtain a notification channel from the Microsoft Push Notification Service (MPNS), and register it with your Push Notification Registration Cloud Service.
+                Once you do that, your phone application will be able to receive raw, toast and tile push notification messages.
+            </p>
+            <p>
+                To find out more about Push Notifications for Windows Phone, check the <a href="http://msdn.microsoft.com/library/ff402558(v=vs.92).aspx">Push Notifications Overview for Windows Phone</a> from MSDN.
+            </p>
+            <h3>Prerequisites</h3>
+            <ul>
+                <li><a href="http://www.microsoft.com/download/en/details.aspx?id=27570">Windows Phone SDK 7.1</a></li>
+                <li><a href="http://www.nuget.org/">NuGet 1.5 or above</a></li>
+            </ul>
+            
+            <h2>Configuration</h2>
+            <h3>Configuring your push notifications settings</h3>
+            <ol>
+                <li>First of all, make sure to have an instance running of the Push Notification Registration Cloud Service where to register the phone notification channels.
+                    To do this, you can install the <i>WindowsAzure.Notifications</i> package in any Web Role project.</li>
+                <li>After that, you need to configure your Push Notification specific settings so they can be used by the client (by default they are stored in application resources).
+                    To do this, go to the <strong>Resources</strong> folder, double-click the <strong>NotificationResources.xaml</strong> file and update the following properties according to your needs. 
+                    <ul>
+                        <li>The <strong>ChannelName</strong> and <strong>ServiceName</strong> properties are used to identify the notification channel instance with the Microsoft Push Notification Service (MPNS).</li>
+                        <li>The <strong>ApplicationId</strong> property is used to identify your Windows Phone application in the Push Notification Registration Cloud Service.</li>
+                        <li>The <strong>ClientId</strong> property is used to identify your Windows Phone device in the Push Notification Registration Cloud Service.</li>
+                        <li>The <strong>DeviceType</strong> property is used to identify the device type in the Push Notification Registration Cloud Service.</li>
+                        <li>The <strong>EndpointsServiceUri</strong> property is the endpoint of the Push Notification Registration Cloud Service where the phone notification channels will be registered.</li>
+                        <li>The <strong>AllowedDomains</strong> property contains a list of the allowed domains for getting the images from tile push notification messages.</li>
+                        <li>The <strong>SignRequest</strong> property is a delegate that is used to sign the requests that are sent to the Push Notification Registration Cloud Service
+                            (by default it is configured for anonymous access). If you plan to secure the Push Notification Registration Cloud Service with the Access Control Service or with the Membership provider, you will need to install in your Windows Phone project the 
+                            <i>Phone.Notifications.AccessControl</i> or <i>Phone.Notifications.Membership</i> NuGet packages respectively.</li>
+                    </ul>
+                </li>
+                <img src="Content/NotificationResources.png" title="Configuring the Push Notification settings" /><br/><br/>
+				<li>You can also change these settings by modifying the <strong>PushContext.Current</strong> 
+                    instance. To dot this, go to the <strong>App_Start</strong> folder, double-click the <strong>PushContextBaseInitializer.cs</strong> file and update it according to your needs.</li><br/><img src="Content/NotificationsPage-Settings.png" title="Changing the way Push Context behaves" />
+            </ol>
+            <!------------------------------------------>
+        </section>
+    </div>
+</body>
+</html>

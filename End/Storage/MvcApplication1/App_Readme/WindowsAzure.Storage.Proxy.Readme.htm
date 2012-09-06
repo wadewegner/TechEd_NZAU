@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Windows Azure Storage Proxy Cloud Services</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div id="header">
+                 <div id="title">
+                    <h1>Windows Azure Storage Proxy Cloud Services</h1>
+                </div>                        
+            
+                <div class="clear"></div>
+
+            </div>
+        </header>
+        <section id="main">
+        
+            <h2>Introduction</h2>
+            <p>Every request made against the Windows Azure Storage Services must be authenticated (unless the request is for a blob or container resource that has been made available for public or signed access).</p>
+			<p>An authenticated request requires two headers: the <i>Date</i> or <i>x-ms-date</i> header and the <i>Authorization</i> header. The latter, contains a request signature that is generated with the key for the account that is making the request. This means that to perform operations to these services, you require to have access to a storage account secrets.</p>
+
+			<p>To avoid having to store your secrets (the storage account name and key) in your client applications, this NuGet package provides a set of proxies services that let you consume the Windows Azure Storage Services in a secure fashion. This way, the storage account information remains safe in the Web Role hosting these services:</p>
+			<ul>
+				<li>The Azure Tables and Queues proxy services are ASP.NET Web API REST Services that forward requests to the real Windows Azure Storage Services. These proxies support different authentication mechanisms, like Membership and ACS, and allow a more granular level of authorization on top of the storage resources by allowing developers to add their custom authorization logic. If the proxy determines that the request has the correct privileges, it will sign the request, forward it to the real Windows Azure Storage Services, and then forward back the response client.</li>
+				<li>The Shared Access Signature service, is a ASP.NET Web API REST Service that delivers Shared Access Signatures (SAS) for containers and blobs. A SAS is a set of URL query parameters that incorporates all of the information necessary to grant controlled access to a blob or container resource. The URL specifies the time interval over which the SAS is valid, the permissions that it grants, the resource that is to be made available, and the signature that the Blob service should use to authenticate the request. Once the phone client receives the SAS, it can use it to perform request Blob Service REST API.</li>
+			</ul>
+
+            <!------------------------------------------>
+			<h3>Prerequisites</h3>
+            <ul>
+                <li><a href="http://www.microsoft.com/windowsazure/sdk/">Windows Azure SDK and Tools</a></li>
+                <li><a href="http://www.nuget.org/">NuGet 1.5 or above</a></li>
+            </ul>
+			
+			<!------------------------------------------>
+			<h2>Configuration</h2>
+            <h3>Configuration your service settings</h3>
+            <p>
+                You can change the default configuration by editing the <b>StorageServices.cs</b> file in the <b>App_Start</b> folder. The following is a list of the options available in the Storage Service configuration context:
+            </p>
+			<ul>
+				<li><strong>AuthenticateRequest</strong>: Performs the user authentication. Allows developers registering a delegate that returns <i>true</i> or <i>false</i> according to whether the request has originated from an authenticated client. By default, the services allow anonymous access. This delegate will be called before the service performs the desired operation in the Windows Azure Storage Account.</li>
+				<li><strong>AuthorizeBlobsAccess</strong>: Performs user authorization of <strong>Blob</strong> requests. Allows developers registering a delegate that returns <i>true</i> or <i>false</i> according to whether the current user performing the request has enough permissions to make it. By default, the services allow all requests to go through. This delegate will be called before the service performs the desired operation in the Windows Azure Storage Account.</li>
+				<li><strong>AuthorizeQueuesAccess</strong>: Performs user authorization of <strong>Queue</strong> requests. Allows developers registering a delegate that returns <i>true</i> or <i>false</i> according to whether the current user performing the request has enough permissions to make it. By default, the services allow all requests to go through. This delegate will be called before the service performs the desired operation in the Windows Azure Storage Account.</li>
+				<li><strong>AuthorizeTablesAccess</strong>: Performs user authorization of <strong>Table</strong> requests. Allows developers registering a delegate that returns <i>true</i> or <i>false</i> according to whether the current user performing the request has enough permissions to make it. By default, the services allow all requests to go through. This delegate will be called before the service performs the desired operation in the Windows Azure Storage Account.</li>
+				<li><strong>BlobsSasExpirationTime</strong>: Is the number of minutes for which Blobs Shared Access Signatures are valid. It should be greater than 0. The defatul value is <strong>15 minutes</strong>.</li>
+				<li><strong>ContainerSasExpirationTime</strong>: Is the number of minutes for which Container Shared Access Signatures are valid. It should be greater than 0. The defatul value is <strong>15 minutes</strong>.</li>
+				<li><strong>WindowsAzureStorageMaximmumResponseSize</strong>: Is the maximmum size of the responses read from Windows Azure Storage. Responses larger than this value will be discarded. The default value is <strong>1MB</strong>.</li>
+				<li><strong>CloudStorageAccount</strong>: The CloudStorageAccount to use in all Storage Services operations. You should update it to point to your Windows Azure Storage account.</li>
+				<li><strong>DelegatingHandlers</strong>: A list of Web API DelegatingHandlers. Allows you to register any handlers you wantto be called in theWeb API Services pipeline, for authentication, logging, etc.</li>
+			</ul>
+			<img src="Content/StorageServices.png" title="Configuring the Storage Proxy Cloud Services" alt="Configuring the Storage Proxy Cloud Services" />
+			
+			<!------------------------------------------>
+		</section>
+    </div>
+</body>
+</html>
